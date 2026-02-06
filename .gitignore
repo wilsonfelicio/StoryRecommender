@@ -1,0 +1,31 @@
+# === Secrets ===
+Secrets.xcconfig
+*.xcconfig
+!Base.xcconfig
+
+# === macOS ===
+.DS_Store
+*.swp
+*~
+
+# === Xcode ===
+build/
+DerivedData/
+*.xcuserdata
+*.xcworkspace
+xcuserdata/
+*.xcscmblueprint
+*.moved-aside
+
+# === Next.js / Web ===
+web/node_modules/
+web/.next/
+web/out/
+
+# === Claude Code ===
+.claude/
+
+# === Environment ===
+.env
+.env.local
+.env.*.local
