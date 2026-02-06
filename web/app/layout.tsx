@@ -32,7 +32,7 @@ export default function RootLayout({
         />
       </head>
       <body className="h-full bg-[#faf5ff] dark:bg-[#0c0a1a] text-gray-900 dark:text-gray-100 font-sans mesh-gradient">
-        <main className="max-w-lg mx-auto min-h-full pb-24 overflow-y-auto">
+        <main className="max-w-lg mx-auto min-h-full pb-32 overflow-y-auto">
           {children}
         </main>
         <BottomNav />
