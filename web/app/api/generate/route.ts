@@ -42,9 +42,17 @@ export async function POST(req: NextRequest) {
   });
 
   if (!upstream.ok) {
-    const errorText = await upstream.text();
+    // Parse a user-friendly error message without leaking raw provider details
+    let errorMessage = `Provider returned ${upstream.status}`;
+    try {
+      const errorData = await upstream.json();
+      const msg = errorData?.error?.message || errorData?.error?.type;
+      if (msg) errorMessage = String(msg);
+    } catch {
+      // ignore parse errors
+    }
     return new Response(
-      JSON.stringify({ error: `Provider returned ${upstream.status}`, details: errorText }),
+      JSON.stringify({ error: errorMessage }),
       { status: upstream.status, headers: { "Content-Type": "application/json" } }
     );
   }

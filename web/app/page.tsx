@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { StoryPreferences, Story } from "@/lib/types";
 import {
   getPreferences,
@@ -25,22 +25,17 @@ type AppState =
 
 export default function GeneratePage() {
   const [state, setState] = useState<AppState>({ status: "idle" });
-  const [preferences, setPreferences] = useState<StoryPreferences>({
-    length: "medium",
-    mood: "adventure",
-    themes: ["animals"],
-    ageRange: "preschool",
-    storyStyle: "classicFairytale",
-    mainCharacter: "child",
-  });
+  const [preferences, setPreferences] = useState<StoryPreferences>(getPreferences);
   const [keyAvailable, setKeyAvailable] = useState(false);
   const [hasBuiltIn, setHasBuiltIn] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const prefsRef = useRef(preferences);
 
   useEffect(() => {
-    setPreferences(getPreferences());
+    const saved = getPreferences();
+    setPreferences(saved);
+    prefsRef.current = saved;
     setKeyAvailable(hasApiKey());
-    // Check if server has a built-in fallback key
     checkBuiltInKey().then((result) => {
       setHasBuiltIn(result);
     });
@@ -63,10 +58,12 @@ export default function GeneratePage() {
 
   const handlePreferencesChange = (prefs: StoryPreferences) => {
     setPreferences(prefs);
+    prefsRef.current = prefs;
     savePreferences(prefs);
   };
 
   const handleGenerate = useCallback(async () => {
+    const prefs = prefsRef.current;
     const provider = getSelectedProvider();
     const apiKey = getApiKey(provider);
 
@@ -77,11 +74,10 @@ export default function GeneratePage() {
     setIsSaved(false);
 
     try {
-      // Send whatever key we have (empty string triggers server-side fallback)
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ provider, apiKey: apiKey || "", preferences }),
+        body: JSON.stringify({ provider, apiKey: apiKey || "", preferences: prefs }),
       });
 
       if (!res.ok) {
@@ -141,9 +137,9 @@ export default function GeneratePage() {
         title,
         author: `AI Storyteller (${provider})`,
         content,
-        length: preferences.length,
-        mood: preferences.mood,
-        themes: preferences.themes,
+        length: prefs.length,
+        mood: prefs.mood,
+        themes: prefs.themes,
         readingTimeMinutes: readingTime,
         createdAt: new Date().toISOString(),
       };
@@ -155,7 +151,7 @@ export default function GeneratePage() {
         message: e instanceof Error ? e.message : "Something went wrong",
       });
     }
-  }, [preferences, hasBuiltIn]);
+  }, [hasBuiltIn]);
 
   const handleSave = () => {
     if (state.status !== "done") return;
