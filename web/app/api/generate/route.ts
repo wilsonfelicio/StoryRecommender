@@ -6,7 +6,7 @@ import { LLMProvider, StoryPreferences } from "@/lib/types";
 export async function POST(req: NextRequest) {
   const {
     provider,
-    apiKey,
+    apiKey: userApiKey,
     preferences,
   }: {
     provider: LLMProvider;
@@ -14,8 +14,17 @@ export async function POST(req: NextRequest) {
     preferences: StoryPreferences;
   } = await req.json();
 
+  // Use user key if provided, otherwise fall back to built-in Anthropic key
+  let apiKey = userApiKey;
+  if (!apiKey && provider === "anthropic") {
+    apiKey = process.env.ANTHROPIC_API_KEY || "";
+  }
+
   if (!apiKey) {
-    return new Response("Missing API key", { status: 400 });
+    return new Response(
+      JSON.stringify({ error: "Missing API key" }),
+      { status: 400, headers: { "Content-Type": "application/json" } }
+    );
   }
 
   const userPrompt = buildUserPrompt(preferences);

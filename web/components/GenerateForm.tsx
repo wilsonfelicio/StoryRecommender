@@ -29,7 +29,7 @@ export default function GenerateForm({
           Story Time
         </h1>
         <p className="text-sm text-gray-400 mt-1">
-          Create a magical bedtime story with AI
+          Create a magical bedtime story with AI - by Francisco
         </p>
       </div>
 

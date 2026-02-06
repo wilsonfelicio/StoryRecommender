@@ -11,6 +11,7 @@ import {
   saveStory,
   deleteStory,
   hasApiKey,
+  checkBuiltInKey,
 } from "@/lib/storage";
 import GenerateForm from "@/components/GenerateForm";
 import StreamingStory from "@/components/StreamingStory";
@@ -33,11 +34,14 @@ export default function GeneratePage() {
     mainCharacter: "child",
   });
   const [keyAvailable, setKeyAvailable] = useState(false);
+  const [hasBuiltIn, setHasBuiltIn] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     setPreferences(getPreferences());
     setKeyAvailable(hasApiKey());
+    // Check if server has a built-in fallback key
+    checkBuiltInKey().then(setHasBuiltIn);
   }, []);
 
   // Re-check key when page becomes visible (user may come back from settings)
@@ -54,6 +58,11 @@ export default function GeneratePage() {
     };
   }, []);
 
+  // User has a key OR the server has a built-in Anthropic key and Anthropic is selected
+  const canGenerate =
+    keyAvailable ||
+    (hasBuiltIn && getSelectedProvider() === "anthropic");
+
   const handlePreferencesChange = (prefs: StoryPreferences) => {
     setPreferences(prefs);
     savePreferences(prefs);
@@ -62,7 +71,10 @@ export default function GeneratePage() {
   const handleGenerate = useCallback(async () => {
     const provider = getSelectedProvider();
     const apiKey = getApiKey(provider);
-    if (!apiKey) return;
+
+    // If no user key but we have a built-in Anthropic key, send empty string
+    // and let the server use its fallback
+    if (!apiKey && !(hasBuiltIn && provider === "anthropic")) return;
 
     setState({ status: "generating", text: "" });
     setIsSaved(false);
@@ -145,7 +157,7 @@ export default function GeneratePage() {
         message: e instanceof Error ? e.message : "Something went wrong",
       });
     }
-  }, [preferences]);
+  }, [preferences, hasBuiltIn]);
 
   const handleSave = () => {
     if (state.status !== "done") return;
@@ -173,7 +185,7 @@ export default function GeneratePage() {
           onPreferencesChange={handlePreferencesChange}
           onGenerate={handleGenerate}
           disabled={false}
-          hasApiKey={keyAvailable}
+          hasApiKey={canGenerate}
         />
       );
 

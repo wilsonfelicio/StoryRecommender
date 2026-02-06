@@ -41,6 +41,18 @@ export function hasApiKey(): boolean {
   return !!getApiKey(provider);
 }
 
+// Check if the server has a built-in Anthropic key as fallback
+export async function checkBuiltInKey(): Promise<boolean> {
+  try {
+    const res = await fetch("/api/config");
+    if (!res.ok) return false;
+    const data = await res.json();
+    return data.hasBuiltInKey === true;
+  } catch {
+    return false;
+  }
+}
+
 // Stories
 export function getSavedStories(): Story[] {
   if (typeof window === "undefined") return [];
