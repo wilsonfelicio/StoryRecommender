@@ -22,7 +22,7 @@ export default function GenerateForm({
     <div className="flex flex-col gap-7 px-5 pb-8">
       {/* Hero */}
       <div className="text-center pt-8 pb-2">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/30 mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-violet-500 to-indigo-500 shadow-lg shadow-violet-500/30 mb-4">
           <span className="text-3xl">✨</span>
         </div>
         <h1 className="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
@@ -34,7 +34,7 @@ export default function GenerateForm({
       </div>
 
       {!hasApiKey && (
-        <div className="glass rounded-2xl p-4 flex items-start gap-3 border-orange-500/20">
+        <div className="glass rounded-2xl p-4 flex items-start gap-3 border border-orange-400/30">
           <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center shrink-0">
             <span className="text-lg">🔑</span>
           </div>
@@ -96,9 +96,9 @@ export default function GenerateForm({
 
       {/* Character Name */}
       <div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-violet-300/80 mb-3">
           Character Name
-          <span className="normal-case tracking-normal font-normal ml-1.5 text-gray-500">
+          <span className="normal-case tracking-normal font-normal ml-1.5 text-gray-400">
             (optional — kids love hearing their name!)
           </span>
         </p>
@@ -109,7 +109,7 @@ export default function GenerateForm({
             onPreferencesChange({ ...preferences, characterName: e.target.value })
           }
           placeholder="Luna, Max, Sofia..."
-          className="w-full p-4 rounded-2xl bg-white/6 border border-white/10 text-white text-sm focus:ring-2 focus:ring-violet-500/50 focus:border-violet-300 focus:outline-none placeholder:text-gray-500"
+          className="w-full p-4 rounded-2xl bg-white/[0.07] border border-white/[0.14] text-white text-sm focus:ring-2 focus:ring-violet-500/50 focus:border-violet-400/60 focus:outline-none placeholder:text-gray-500 transition-colors duration-200"
         />
       </div>
 
@@ -124,7 +124,7 @@ export default function GenerateForm({
       />
 
       <div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-violet-300/80 mb-3">
           Story Idea
         </p>
         <textarea
@@ -133,7 +133,7 @@ export default function GenerateForm({
             onPreferencesChange({ ...preferences, customPrompt: e.target.value })
           }
           placeholder="A brave little fox who discovers a hidden garden..."
-          className="w-full p-4 rounded-2xl bg-white/6 border border-white/10 text-white text-sm resize-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-300 focus:outline-none placeholder:text-gray-500 min-h-[80px]"
+          className="w-full p-4 rounded-2xl bg-white/[0.07] border border-white/[0.14] text-white text-sm resize-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-400/60 focus:outline-none placeholder:text-gray-500 min-h-[80px] transition-colors duration-200"
           rows={3}
         />
       </div>
@@ -141,7 +141,7 @@ export default function GenerateForm({
       <button
         onClick={onGenerate}
         disabled={disabled || !hasApiKey || preferences.themes.length === 0}
-        className="w-full py-4 rounded-2xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white font-bold text-base disabled:opacity-30 disabled:cursor-not-allowed hover:shadow-xl hover:shadow-violet-500/25 active:scale-[0.98] transition-all duration-200 glow-purple"
+        className="w-full py-4 rounded-2xl bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white font-bold text-base disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-xl hover:shadow-violet-500/25 active:scale-[0.98] transition-all duration-200 glow-purple"
       >
         ✨ Generate Story
       </button>

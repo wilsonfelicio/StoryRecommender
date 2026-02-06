@@ -12,7 +12,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: "#0c0a1a",
+  themeColor: "#141024",
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="h-full bg-[#0c0a1a] text-gray-100 font-sans mesh-gradient">
+      <body className="h-full bg-[#141024] text-gray-100 font-sans mesh-gradient">
         <main className="max-w-lg mx-auto min-h-full pb-32 overflow-y-auto">
           {children}
         </main>

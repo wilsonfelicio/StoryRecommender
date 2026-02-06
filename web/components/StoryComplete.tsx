@@ -47,7 +47,7 @@ export default function StoryComplete({
       </div>
 
       {/* Story card */}
-      <div className="glass rounded-3xl p-6 space-y-4 mb-8">
+      <div className="glass rounded-3xl p-6 space-y-4 mb-8 shadow-inner shadow-violet-500/[0.03]">
         {paragraphs.map((p, i) => (
           <p
             key={i}

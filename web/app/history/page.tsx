@@ -40,13 +40,13 @@ export default function HistoryPage() {
           <p className="text-sm text-gray-400 mt-1">
             by {selected.author}
           </p>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-gray-400 mt-1">
             {new Date(selected.createdAt).toLocaleDateString()} · {selected.readingTimeMinutes} min read
           </p>
         </div>
 
         {/* Story Content */}
-        <div className="glass rounded-3xl p-6 space-y-4">
+        <div className="glass rounded-3xl p-6 space-y-4 shadow-inner shadow-violet-500/[0.03]">
           {paragraphs.map((p, i) => (
             <p
               key={i}
@@ -97,7 +97,7 @@ export default function HistoryPage() {
             <p className="text-sm font-semibold text-gray-300 mb-1">
               No stories yet
             </p>
-            <p className="text-xs text-gray-500 max-w-[200px]">
+            <p className="text-xs text-gray-400 max-w-[200px]">
               Generate a story and save it to build your collection!
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function HistoryPage() {
                 <p className="text-xs text-gray-400">
                   {story.author} · {story.readingTimeMinutes} min · {new Date(story.createdAt).toLocaleDateString()}
                 </p>
-                <p className="text-xs text-gray-500 mt-1.5 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-gray-400 mt-1.5 line-clamp-2 leading-relaxed">
                   {story.content.slice(0, 120)}...
                 </p>
               </button>

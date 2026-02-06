@@ -43,7 +43,7 @@ export default function ChipSelector({
 
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+      <p className="text-xs font-semibold uppercase tracking-widest text-violet-300/80 mb-3">
         {label}
       </p>
       <div className={`grid ${cols} gap-2`}>
@@ -54,8 +54,8 @@ export default function ChipSelector({
             onClick={() => handleClick(opt.value)}
             className={`px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 text-center ${
               isSelected(opt.value)
-                ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-md shadow-violet-500/25"
-                : "bg-white/8 border border-white/10 text-gray-300 hover:border-violet-500/30 hover:bg-violet-500/10"
+                ? "bg-gradient-to-r from-violet-500 to-indigo-500 text-white shadow-lg shadow-violet-500/30 ring-1 ring-violet-400/30 scale-[1.02]"
+                : "bg-white/[0.09] border border-white/[0.14] text-gray-200 hover:border-violet-400/40 hover:bg-violet-500/15 active:scale-[0.97]"
             }`}
           >
             <span className="mr-1">{opt.emoji}</span>

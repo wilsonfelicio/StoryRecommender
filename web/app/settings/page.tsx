@@ -132,7 +132,7 @@ export default function SettingsPage() {
 
       {/* Provider Selection */}
       <section className="mb-7">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-violet-300/80 mb-3">
           AI Provider
         </p>
         <div className="flex flex-col gap-2.5">
@@ -175,7 +175,7 @@ export default function SettingsPage() {
 
       {/* API Key */}
       <section className="mb-7">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-violet-300/80 mb-3">
           API Key
         </p>
 
@@ -188,7 +188,7 @@ export default function SettingsPage() {
               setMessage(null);
             }}
             placeholder={providerConfig.placeholder}
-            className="w-full p-3.5 rounded-xl bg-white/5 border border-white/10 text-sm font-mono text-white focus:ring-2 focus:ring-violet-500/50 focus:border-transparent focus:outline-none placeholder:text-gray-600"
+            className="w-full p-3.5 rounded-xl bg-white/[0.07] border border-white/[0.14] text-sm font-mono text-white focus:ring-2 focus:ring-violet-500/50 focus:border-violet-400/60 focus:outline-none placeholder:text-gray-500 transition-colors duration-200"
           />
 
           <div className="flex gap-2">
@@ -221,14 +221,14 @@ export default function SettingsPage() {
           )}
         </div>
 
-        <p className="text-xs text-gray-500 mt-3 text-center">
+        <p className="text-xs text-gray-400 mt-3 text-center">
           🔐 Stored locally in your browser — never sent to our servers.
         </p>
       </section>
 
       {/* Test Connection */}
       <section className="mb-7">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-violet-300/80 mb-3">
           Connection Test
         </p>
         <button
@@ -260,7 +260,7 @@ export default function SettingsPage() {
 
       {/* Config Summary */}
       <section>
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-violet-300/80 mb-3">
           Current Configuration
         </p>
         <div className="glass rounded-2xl p-5 space-y-3">
@@ -270,14 +270,14 @@ export default function SettingsPage() {
               {providerConfig.displayName}
             </span>
           </div>
-          <div className="h-px bg-white/5" />
+          <div className="h-px bg-white/[0.08]" />
           <div className="flex justify-between items-center">
             <span className="text-sm text-gray-400">Model</span>
             <span className="text-sm font-semibold text-white font-mono">
               {providerConfig.defaultModel}
             </span>
           </div>
-          <div className="h-px bg-white/5" />
+          <div className="h-px bg-white/[0.08]" />
           <div className="flex justify-between items-center">
             <span className="text-sm text-gray-400">Key</span>
             <span

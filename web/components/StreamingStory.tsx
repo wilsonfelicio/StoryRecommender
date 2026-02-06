@@ -29,7 +29,7 @@ export default function StreamingStory({ text }: StreamingStoryProps) {
       </div>
 
       {/* Story text */}
-      <div className="glass rounded-3xl p-6 space-y-4">
+      <div className="glass rounded-3xl p-6 space-y-4 shadow-inner shadow-violet-500/[0.03]">
         {paragraphs.map((p, i) => (
           <p
             key={i}
