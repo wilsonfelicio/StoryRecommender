@@ -41,27 +41,25 @@ export default function GeneratePage() {
     setPreferences(getPreferences());
     setKeyAvailable(hasApiKey());
     // Check if server has a built-in fallback key
-    checkBuiltInKey().then(setHasBuiltIn);
+    checkBuiltInKey().then((result) => {
+      setHasBuiltIn(result);
+    });
   }, []);
 
   // Re-check key when page becomes visible (user may come back from settings)
   useEffect(() => {
-    const handleVisibility = () => {
-      if (!document.hidden) setKeyAvailable(hasApiKey());
-    };
-    const handleFocus = () => setKeyAvailable(hasApiKey());
+    const check = () => setKeyAvailable(hasApiKey());
+    const handleVisibility = () => { if (!document.hidden) check(); };
     document.addEventListener("visibilitychange", handleVisibility);
-    window.addEventListener("focus", handleFocus);
+    window.addEventListener("focus", check);
     return () => {
       document.removeEventListener("visibilitychange", handleVisibility);
-      window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("focus", check);
     };
   }, []);
 
-  // User has a key OR the server has a built-in Anthropic key and Anthropic is selected
-  const canGenerate =
-    keyAvailable ||
-    (hasBuiltIn && getSelectedProvider() === "anthropic");
+  // User has a key OR the server has a built-in Anthropic key
+  const canGenerate = keyAvailable || hasBuiltIn;
 
   const handlePreferencesChange = (prefs: StoryPreferences) => {
     setPreferences(prefs);
@@ -72,18 +70,18 @@ export default function GeneratePage() {
     const provider = getSelectedProvider();
     const apiKey = getApiKey(provider);
 
-    // If no user key but we have a built-in Anthropic key, send empty string
-    // and let the server use its fallback
-    if (!apiKey && !(hasBuiltIn && provider === "anthropic")) return;
+    // If no user key and no built-in fallback, don't attempt
+    if (!apiKey && !hasBuiltIn) return;
 
     setState({ status: "generating", text: "" });
     setIsSaved(false);
 
     try {
+      // Send whatever key we have (empty string triggers server-side fallback)
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ provider, apiKey, preferences }),
+        body: JSON.stringify({ provider, apiKey: apiKey || "", preferences }),
       });
 
       if (!res.ok) {

@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   // Use user key if provided, otherwise fall back to built-in Anthropic key
   let apiKey = userApiKey;
   if (!apiKey && provider === "anthropic") {
-    apiKey = process.env.ANTHROPIC_API_KEY || "";
+    apiKey = process.env.BUILTIN_ANTHROPIC_KEY || "";
   }
 
   if (!apiKey) {
