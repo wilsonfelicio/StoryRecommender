@@ -122,17 +122,17 @@ export default function SettingsPage() {
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-600 to-slate-700 shadow-lg shadow-gray-500/20 mb-3">
           <span className="text-2xl">⚙️</span>
         </div>
-        <h1 className="text-xl font-extrabold bg-gradient-to-r from-violet-700 via-indigo-600 to-purple-600 dark:from-violet-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-xl font-extrabold bg-gradient-to-r from-violet-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
           Settings
         </h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+        <p className="text-sm text-gray-400 mt-1">
           Configure your AI provider
         </p>
       </div>
 
       {/* Provider Selection */}
       <section className="mb-7">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
           AI Provider
         </p>
         <div className="flex flex-col gap-2.5">
@@ -142,15 +142,15 @@ export default function SettingsPage() {
               onClick={() => handleProviderChange(p.value)}
               className={`flex items-center gap-3.5 p-4 rounded-2xl text-left transition-all duration-200 ${
                 provider === p.value
-                  ? "bg-gradient-to-r from-violet-600/10 to-indigo-600/10 dark:from-violet-500/15 dark:to-indigo-500/15 border-2 border-violet-500/50 dark:border-violet-400/40 shadow-md shadow-violet-500/10 scale-[1.01]"
+                  ? "bg-gradient-to-r from-violet-500/15 to-indigo-500/15 border-2 border-violet-400/40 shadow-md shadow-violet-500/10 scale-[1.01]"
                   : "glass hover:scale-[1.01] active:scale-[0.99]"
               }`}
             >
               <div
                 className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
                   provider === p.value
-                    ? "border-violet-500 dark:border-violet-400"
-                    : "border-gray-300 dark:border-gray-600"
+                    ? "border-violet-400"
+                    : "border-gray-600"
                 }`}
               >
                 {provider === p.value && (
@@ -158,10 +158,10 @@ export default function SettingsPage() {
                 )}
               </div>
               <div className="flex-1">
-                <p className="font-semibold text-sm text-gray-900 dark:text-white">
+                <p className="font-semibold text-sm text-white">
                   {p.displayName}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5">
                   {p.defaultModel}
                 </p>
               </div>
@@ -175,7 +175,7 @@ export default function SettingsPage() {
 
       {/* API Key */}
       <section className="mb-7">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
           API Key
         </p>
 
@@ -188,7 +188,7 @@ export default function SettingsPage() {
               setMessage(null);
             }}
             placeholder={providerConfig.placeholder}
-            className="w-full p-3.5 rounded-xl bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-sm font-mono text-gray-900 dark:text-white focus:ring-2 focus:ring-violet-500/50 focus:border-transparent focus:outline-none placeholder:text-gray-400 dark:placeholder:text-gray-600"
+            className="w-full p-3.5 rounded-xl bg-white/5 border border-white/10 text-sm font-mono text-white focus:ring-2 focus:ring-violet-500/50 focus:border-transparent focus:outline-none placeholder:text-gray-600"
           />
 
           <div className="flex gap-2">
@@ -201,7 +201,7 @@ export default function SettingsPage() {
             {hasKey && (
               <button
                 onClick={handleDelete}
-                className="py-3 px-5 rounded-xl bg-rose-100/80 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 text-sm font-semibold hover:bg-rose-200 dark:hover:bg-rose-500/20 active:scale-[0.98] transition-all duration-200"
+                className="py-3 px-5 rounded-xl bg-rose-500/10 text-rose-400 text-sm font-semibold hover:bg-rose-500/20 active:scale-[0.98] transition-all duration-200"
               >
                 Remove
               </button>
@@ -212,8 +212,8 @@ export default function SettingsPage() {
             <p
               className={`text-xs font-medium ${
                 message.success
-                  ? "text-emerald-600 dark:text-emerald-400"
-                  : "text-rose-500 dark:text-rose-400"
+                  ? "text-emerald-400"
+                  : "text-rose-400"
               }`}
             >
               {message.success ? "✓" : "✗"} {message.text}
@@ -221,20 +221,20 @@ export default function SettingsPage() {
           )}
         </div>
 
-        <p className="text-xs text-gray-400 dark:text-gray-500 mt-3 text-center">
+        <p className="text-xs text-gray-500 mt-3 text-center">
           🔐 Stored locally in your browser — never sent to our servers.
         </p>
       </section>
 
       {/* Test Connection */}
       <section className="mb-7">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
           Connection Test
         </p>
         <button
           onClick={handleTest}
           disabled={isTesting || !hasKey}
-          className="w-full py-3.5 rounded-2xl glass text-sm font-semibold text-gray-700 dark:text-gray-300 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-[1.01] active:scale-[0.99] transition-all duration-200"
+          className="w-full py-3.5 rounded-2xl glass text-sm font-semibold text-gray-300 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-[1.01] active:scale-[0.99] transition-all duration-200"
         >
           {isTesting ? (
             <span className="flex items-center justify-center gap-2">
@@ -249,8 +249,8 @@ export default function SettingsPage() {
           <div
             className={`mt-3 p-3 rounded-xl text-xs font-medium text-center ${
               testResult.success
-                ? "bg-emerald-100/80 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
-                : "bg-rose-100/80 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                ? "bg-emerald-500/10 text-emerald-400"
+                : "bg-rose-500/10 text-rose-400"
             }`}
           >
             {testResult.success ? "✓" : "✗"} {testResult.text}
@@ -260,31 +260,31 @@ export default function SettingsPage() {
 
       {/* Config Summary */}
       <section>
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
           Current Configuration
         </p>
         <div className="glass rounded-2xl p-5 space-y-3">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-500 dark:text-gray-400">Provider</span>
-            <span className="text-sm font-semibold text-gray-900 dark:text-white">
+            <span className="text-sm text-gray-400">Provider</span>
+            <span className="text-sm font-semibold text-white">
               {providerConfig.displayName}
             </span>
           </div>
-          <div className="h-px bg-gray-200/50 dark:bg-white/5" />
+          <div className="h-px bg-white/5" />
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-500 dark:text-gray-400">Model</span>
-            <span className="text-sm font-semibold text-gray-900 dark:text-white font-mono">
+            <span className="text-sm text-gray-400">Model</span>
+            <span className="text-sm font-semibold text-white font-mono">
               {providerConfig.defaultModel}
             </span>
           </div>
-          <div className="h-px bg-gray-200/50 dark:bg-white/5" />
+          <div className="h-px bg-white/5" />
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-500 dark:text-gray-400">Key</span>
+            <span className="text-sm text-gray-400">Key</span>
             <span
               className={`text-sm font-semibold ${
                 hasKey
-                  ? "text-emerald-600 dark:text-emerald-400"
-                  : "text-gray-400 dark:text-gray-500"
+                  ? "text-emerald-400"
+                  : "text-gray-500"
               }`}
             >
               {hasKey ? "✓ Configured" : "Not set"}

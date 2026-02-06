@@ -38,10 +38,10 @@ export default function StoryComplete({
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/30 mb-3">
           <span className="text-2xl">✨</span>
         </div>
-        <h2 className="text-xl font-extrabold bg-gradient-to-r from-violet-700 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">
+        <h2 className="text-xl font-extrabold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
           {story.title}
         </h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+        <p className="text-sm text-gray-400 mt-1">
           by {story.author}
         </p>
       </div>
@@ -51,7 +51,7 @@ export default function StoryComplete({
         {paragraphs.map((p, i) => (
           <p
             key={i}
-            className="text-[17px] leading-8 text-gray-800 dark:text-gray-200 select-text font-serif"
+            className="text-[17px] leading-8 text-gray-200 select-text font-serif"
           >
             {p}
           </p>
@@ -66,7 +66,7 @@ export default function StoryComplete({
             className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-semibold transition-all duration-200 ${
               isSaved
                 ? "bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg shadow-rose-500/25"
-                : "glass text-gray-600 dark:text-gray-300 hover:scale-[1.02] active:scale-[0.98]"
+                : "glass text-gray-300 hover:scale-[1.02] active:scale-[0.98]"
             }`}
           >
             {isSaved ? "❤️ Saved" : "🤍 Save"}
@@ -74,7 +74,7 @@ export default function StoryComplete({
 
           <button
             onClick={handleShare}
-            className="flex items-center gap-2 px-5 py-3 rounded-2xl glass text-gray-600 dark:text-gray-300 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="flex items-center gap-2 px-5 py-3 rounded-2xl glass text-gray-300 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             📤 Share
           </button>
@@ -82,7 +82,7 @@ export default function StoryComplete({
 
         <button
           onClick={onReset}
-          className="text-sm text-violet-600 dark:text-violet-400 font-semibold hover:underline underline-offset-2 mt-1"
+          className="text-sm text-violet-400 font-semibold hover:underline underline-offset-2 mt-1"
         >
           Generate Another
         </button>

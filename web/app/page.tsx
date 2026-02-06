@@ -196,10 +196,10 @@ export default function GeneratePage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-rose-500 to-orange-500 shadow-lg shadow-rose-500/30 mb-4">
             <span className="text-3xl">😕</span>
           </div>
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-lg font-bold text-white mb-2">
             Oops!
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-xs">
+          <p className="text-sm text-gray-400 mb-6 max-w-xs">
             {state.message}
           </p>
           <button

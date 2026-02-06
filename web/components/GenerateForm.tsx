@@ -25,24 +25,24 @@ export default function GenerateForm({
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/30 mb-4">
           <span className="text-3xl">✨</span>
         </div>
-        <h1 className="text-2xl font-extrabold bg-gradient-to-r from-violet-700 via-indigo-600 to-purple-600 dark:from-violet-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
           Story Time
         </h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+        <p className="text-sm text-gray-400 mt-1">
           Create a magical bedtime story with AI
         </p>
       </div>
 
       {!hasApiKey && (
-        <div className="glass rounded-2xl p-4 flex items-start gap-3 border-orange-200/50 dark:border-orange-500/20">
-          <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-500/10 flex items-center justify-center shrink-0">
+        <div className="glass rounded-2xl p-4 flex items-start gap-3 border-orange-500/20">
+          <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center shrink-0">
             <span className="text-lg">🔑</span>
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+            <p className="text-sm font-semibold text-gray-200">
               API Key Required
             </p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+            <p className="text-xs text-gray-400 mt-0.5">
               Go to Settings to add your API key
             </p>
           </div>
@@ -96,9 +96,9 @@ export default function GenerateForm({
 
       {/* Character Name */}
       <div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
           Character Name
-          <span className="normal-case tracking-normal font-normal ml-1.5 text-gray-400 dark:text-gray-500">
+          <span className="normal-case tracking-normal font-normal ml-1.5 text-gray-500">
             (optional — kids love hearing their name!)
           </span>
         </p>
@@ -109,7 +109,7 @@ export default function GenerateForm({
             onPreferencesChange({ ...preferences, characterName: e.target.value })
           }
           placeholder="Luna, Max, Sofia..."
-          className="w-full p-4 rounded-2xl bg-white/80 dark:bg-white/6 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-violet-500/50 focus:border-violet-300 focus:outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
+          className="w-full p-4 rounded-2xl bg-white/6 border border-white/10 text-white text-sm focus:ring-2 focus:ring-violet-500/50 focus:border-violet-300 focus:outline-none placeholder:text-gray-500"
         />
       </div>
 
@@ -124,7 +124,7 @@ export default function GenerateForm({
       />
 
       <div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
           Story Idea
         </p>
         <textarea
@@ -133,7 +133,7 @@ export default function GenerateForm({
             onPreferencesChange({ ...preferences, customPrompt: e.target.value })
           }
           placeholder="A brave little fox who discovers a hidden garden..."
-          className="w-full p-4 rounded-2xl bg-white/80 dark:bg-white/6 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm resize-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-300 focus:outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500 min-h-[80px]"
+          className="w-full p-4 rounded-2xl bg-white/6 border border-white/10 text-white text-sm resize-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-300 focus:outline-none placeholder:text-gray-500 min-h-[80px]"
           rows={3}
         />
       </div>

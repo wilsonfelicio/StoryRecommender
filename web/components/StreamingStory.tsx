@@ -22,7 +22,7 @@ export default function StreamingStory({ text }: StreamingStoryProps) {
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/30 mb-3">
           <span className="text-2xl">✨</span>
         </div>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+        <h2 className="text-lg font-bold text-white">
           Writing your story...
         </h2>
         <div className="shimmer h-0.5 w-32 mx-auto mt-3 rounded-full" />
@@ -33,7 +33,7 @@ export default function StreamingStory({ text }: StreamingStoryProps) {
         {paragraphs.map((p, i) => (
           <p
             key={i}
-            className="text-[17px] leading-8 text-gray-800 dark:text-gray-200 font-serif"
+            className="text-[17px] leading-8 text-gray-200 font-serif"
           >
             {p}
             {i === paragraphs.length - 1 && (
@@ -48,7 +48,7 @@ export default function StreamingStory({ text }: StreamingStoryProps) {
         {[0, 1, 2].map((i) => (
           <span
             key={i}
-            className="w-2 h-2 bg-violet-400 dark:bg-violet-500 rounded-full animate-soft-bounce"
+            className="w-2 h-2 bg-violet-500 rounded-full animate-soft-bounce"
             style={{ animationDelay: `${i * 0.2}s` }}
           />
         ))}
