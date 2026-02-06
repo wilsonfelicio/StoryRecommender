@@ -80,10 +80,10 @@ export function deleteStory(id: string) {
 // Preferences
 export function getPreferences(): StoryPreferences {
   const defaults: StoryPreferences = {
-    length: "medium",
-    mood: "adventure",
+    length: "short",
+    mood: "calming",
     themes: ["animals"],
-    ageRange: "preschool",
+    ageRange: "toddler",
     storyStyle: "classicFairytale",
     mainCharacter: "child",
   };

@@ -12,15 +12,10 @@ export type StoryMood =
 export type StoryTheme =
   | "nature"
   | "animals"
-  | "music"
   | "space"
   | "friendship"
   | "fantasy"
-  | "royalty"
-  | "dinosaurs"
-  | "ocean"
-  | "superheroes"
-  | "cooking";
+  | "ocean";
 export type AgeRange = "toddler" | "preschool" | "earlyReader" | "middleGrade";
 export type StoryStyle = "classicFairytale" | "rhyming" | "interactive" | "fable";
 export type MainCharacter = "child" | "animal" | "robot" | "magicalBeing";
@@ -67,15 +62,10 @@ export const MOODS: { value: StoryMood; label: string; emoji: string }[] = [
 export const THEMES: { value: StoryTheme; label: string; emoji: string }[] = [
   { value: "nature", label: "Nature", emoji: "🌿" },
   { value: "animals", label: "Animals", emoji: "🐾" },
-  { value: "music", label: "Music", emoji: "🎵" },
   { value: "space", label: "Space", emoji: "🚀" },
   { value: "friendship", label: "Friendship", emoji: "🤝" },
   { value: "fantasy", label: "Fantasy", emoji: "🧙" },
-  { value: "royalty", label: "Royalty", emoji: "🏰" },
-  { value: "dinosaurs", label: "Dinosaurs", emoji: "🦕" },
   { value: "ocean", label: "Ocean", emoji: "🌊" },
-  { value: "superheroes", label: "Superheroes", emoji: "🦸" },
-  { value: "cooking", label: "Cooking", emoji: "🍪" },
 ];
 
 export const AGE_RANGES: { value: AgeRange; label: string; emoji: string; description: string }[] = [
