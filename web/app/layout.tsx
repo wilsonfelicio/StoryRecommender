@@ -3,8 +3,18 @@ import "./globals.css";
 import BottomNav from "@/components/BottomNav";
 
 export const metadata: Metadata = {
-  title: "Story Time",
-  description: "AI bedtime story generator",
+  title: "Softlight Stories",
+  description: "AI bedtime story generator for kids",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    title: "Softlight Stories",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: "/icon-192.png",
+    apple: "/icon-192.png",
+  },
 };
 
 export const viewport: Viewport = {

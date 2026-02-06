@@ -26,10 +26,10 @@ export default function GenerateForm({
           <span className="text-3xl">✨</span>
         </div>
         <h1 className="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-          Story Time
+          Softlight Stories
         </h1>
         <p className="text-sm text-gray-400 mt-1">
-          Create a magical bedtime story with AI - by Francisco
+          Create a magical bedtime story with AI
         </p>
       </div>
 
